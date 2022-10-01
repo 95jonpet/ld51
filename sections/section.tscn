@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://blb80p3fefnl4"]
+
+[ext_resource type="TileSet" uid="uid://b2cr3yys3f4lk" path="res://world/tileset.tres" id="1_3x50t"]
+[ext_resource type="Script" path="res://sections/section.gd" id="1_8qb04"]
+[ext_resource type="Texture2D" uid="uid://bospghkx14ibl" path="res://sections/section_background.png" id="2_y7w0b"]
+
+[node name="Section" type="Node2D"]
+script = ExtResource("1_8qb04")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(10, 8)
+z_index = -100
+texture = ExtResource("2_y7w0b")
+centered = false
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_3x50t")
+format = 2
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]

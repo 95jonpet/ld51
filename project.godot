@@ -15,12 +15,18 @@ _global_script_classes=[{
 "path": "res://player/player.gd"
 }, {
 "base": "Node2D",
+"class": &"Section",
+"language": &"GDScript",
+"path": "res://sections/section.gd"
+}, {
+"base": "Node2D",
 "class": &"Weapon",
 "language": &"GDScript",
 "path": "res://weapons/weapon.gd"
 }]
 _global_script_class_icons={
 "Player": "",
+"Section": "",
 "Weapon": ""
 }
 

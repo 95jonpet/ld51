@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh70kx1rccxpc"]
+
+[ext_resource type="PackedScene" uid="uid://blb80p3fefnl4" path="res://sections/section.tscn" id="1_dabjq"]
+[ext_resource type="PackedScene" uid="uid://dyosqrpqlkmqt" path="res://world/ladder.tscn" id="2_tfrpl"]
+[ext_resource type="PackedScene" uid="uid://c2118xkybqvds" path="res://demon/demon.tscn" id="3_8c73k"]
+
+[node name="Landing2" instance=ExtResource("1_dabjq")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458752, 0, 3, 458753, 65536, 3, 458754, 393216, 3, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 327680, 3, 458760, 65536, 3, 458761, 131072, 3, 393223, 131072, 1, 327687, 131072, 0, 393218, 0, 0, 327683, 0, 0, 327684, 65536, 0, 327685, 65536, 0, 327686, 65536, 0, 393222, 65536, 1, 393221, 65536, 1, 393220, 65536, 1, 393219, 393216, 2, 196614, 131072, 3, 196613, 65536, 3, 196612, 0, 3)
+
+[node name="Ladder" parent="Ladders" index="0" instance=ExtResource("2_tfrpl")]
+position = Vector2(136, 104)
+
+[node name="Ladder2" parent="Ladders" index="1" instance=ExtResource("2_tfrpl")]
+position = Vector2(136, 88)
+
+[node name="Ladder3" parent="Ladders" index="2" instance=ExtResource("2_tfrpl")]
+position = Vector2(136, 72)
+
+[node name="Ladder4" parent="Ladders" index="3" instance=ExtResource("2_tfrpl")]
+position = Vector2(56, 72)
+
+[node name="Ladder5" parent="Ladders" index="4" instance=ExtResource("2_tfrpl")]
+position = Vector2(56, 56)
+
+[node name="Ladder6" parent="Ladders" index="5" instance=ExtResource("2_tfrpl")]
+position = Vector2(56, 40)
+
+[node name="Demon" parent="Enemies" index="0" instance=ExtResource("3_8c73k")]
+position = Vector2(8, 112)
+
+[node name="Demon2" parent="Enemies" index="1" instance=ExtResource("3_8c73k")]
+position = Vector2(152, 112)

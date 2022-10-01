@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://m8c7mbqa36g7"]
+
+[ext_resource type="PackedScene" uid="uid://blb80p3fefnl4" path="res://sections/section.tscn" id="1_8cubn"]
+[ext_resource type="PackedScene" uid="uid://ccl7yugk4jd7m" path="res://world/spikes.tscn" id="2_bagwf"]
+[ext_resource type="PackedScene" uid="uid://dyosqrpqlkmqt" path="res://world/ladder.tscn" id="2_r6q54"]
+
+[node name="Corridor2" instance=ExtResource("1_8cubn")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458752, 0, 3, 458753, 65536, 3, 458754, 65536, 3, 458755, 65536, 3, 458756, 65536, 3, 458757, 524288, 3, 458758, 65536, 3, 458759, 524288, 3, 458760, 65536, 3, 458761, 131072, 3, 393223, 196608, 1, 327687, 196608, 0, 393221, 196608, 0, 327684, 131072, 3, 327683, 65536, 3, 327682, 65536, 3, 327681, 0, 3, 131073, 0, 3, 131074, 65536, 3, 131075, 65536, 3, 131076, 65536, 3, 131077, 65536, 3, 131078, 65536, 3, 131079, 65536, 3, 131080, 65536, 3, 131081, 131072, 3, 0, 0, 3, 1, 65536, 3, 2, 65536, 3, 3, 65536, 3, 4, 65536, 3, 5, 65536, 3, 6, 65536, 3, 7, 65536, 3, 8, 65536, 3, 9, 131072, 3)
+
+[node name="Ladder" parent="Ladders" index="0" instance=ExtResource("2_r6q54")]
+position = Vector2(8, 24)
+
+[node name="Ladder2" parent="Ladders" index="1" instance=ExtResource("2_r6q54")]
+position = Vector2(8, 40)
+
+[node name="Ladder3" parent="Ladders" index="2" instance=ExtResource("2_r6q54")]
+position = Vector2(8, 56)
+
+[node name="Spikes2" parent="Spikes" index="0" instance=ExtResource("2_bagwf")]
+position = Vector2(104, 104)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://fsqhrwiuqv20"]
+
+[ext_resource type="PackedScene" uid="uid://blb80p3fefnl4" path="res://sections/section.tscn" id="1_dabjq"]
+[ext_resource type="PackedScene" uid="uid://ccl7yugk4jd7m" path="res://world/spikes.tscn" id="2_hmqx8"]
+
+[node name="Landing1" instance=ExtResource("1_dabjq")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(393225, 131072, 0, 458761, 131072, 2, 458760, 65536, 2, 393224, 327680, 2, 393223, 65536, 1, 393222, 65536, 1, 393221, 65536, 1, 393220, 65536, 1, 393219, 65536, 1, 393218, 393216, 2, 393217, 65536, 0, 393216, 0, 0, 458753, 65536, 2, 458754, 65536, 2, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 458758, 65536, 2, 458759, 65536, 2, 458752, 0, 2, 327682, 0, 0, 327683, 393216, 2, 327684, 65536, 1, 327685, 65536, 1, 327686, 65536, 1, 327687, 327680, 2, 327688, 131072, 0, 262147, 0, 0, 262148, 65536, 0, 262149, 65536, 0, 262150, 65536, 0, 262151, 131072, 0)
+
+[node name="Spikes" parent="Spikes" index="0" instance=ExtResource("2_hmqx8")]
+position = Vector2(104, 56)
+
+[node name="Spikes2" parent="Spikes" index="1" instance=ExtResource("2_hmqx8")]
+position = Vector2(24, 88)

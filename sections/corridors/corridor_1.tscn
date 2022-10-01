@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://2frs51qiqbxa"]
+
+[ext_resource type="PackedScene" uid="uid://blb80p3fefnl4" path="res://sections/section.tscn" id="1_8cubn"]
+[ext_resource type="PackedScene" uid="uid://c2118xkybqvds" path="res://demon/demon.tscn" id="2_og1n2"]
+
+[node name="Corridor1" instance=ExtResource("1_8cubn")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(458752, 0, 3, 458753, 65536, 3, 458754, 65536, 3, 458755, 65536, 3, 327684, 196608, 0, 393220, 262144, 2, 458756, 393216, 3, 393221, 131072, 0, 458757, 327680, 3, 458758, 65536, 3, 458759, 65536, 3, 458760, 65536, 3, 458761, 131072, 3, 65545, 196608, 2, 9, 458752, 0, 8, 65536, 3, 65543, 196608, 2, 7, 524288, 0, 6, 65536, 3, 5, 65536, 3, 4, 65536, 3, 3, 524288, 0, 65539, 196608, 2, 2, 65536, 3, 1, 524288, 0, 65537, 196608, 2, 0, 0, 3)
+
+[node name="Demon" parent="Enemies" index="0" instance=ExtResource("2_og1n2")]
+position = Vector2(120, 112)
