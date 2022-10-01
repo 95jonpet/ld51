@@ -10,12 +10,17 @@ func shoot(direction: float) -> void:
 		return
 
 	_can_shoot = false
+	AudioPlayer.play(_sound())
 	_shoot(direction)
 	_timer.start()
 
 
 func _shoot(_direction: float) -> void:
 	pass
+
+
+func _sound() -> AudioStream:
+	return AudioStream.new()
 
 
 func _on_timer_timeout() -> void:

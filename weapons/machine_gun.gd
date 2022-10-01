@@ -14,3 +14,8 @@ func _shoot(direction: float) -> void:
 	get_tree().root.add_child(bullet)
 	bullet.rotation = direction
 	bullet.velocity = Vector2(BULLET_SPEED, 0).rotated(direction)
+
+
+func _sound() -> AudioStream:
+	return preload("res://weapons/machine_gun.wav")
+

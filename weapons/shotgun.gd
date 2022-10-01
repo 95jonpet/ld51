@@ -14,6 +14,10 @@ func _shoot(direction: float) -> void:
 	_shoot_in_direction(direction + offset)
 
 
+func _sound() -> AudioStream:
+	return preload("res://weapons/shotgun.wav")
+
+
 func _shoot_in_direction(direction: float) -> void:
 	var bullet := BULLLET_SCENE.instantiate()
 	bullet.global_position = barrel.global_position

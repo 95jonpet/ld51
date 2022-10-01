@@ -112,3 +112,10 @@ position = Vector2(0, -8)
 position = Vector2(4, -6)
 
 [node name="Gun" parent="Hand" instance=ExtResource("4_kf6g4")]
+
+[node name="LadderCheck" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+target_position = Vector2(0, 12)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
