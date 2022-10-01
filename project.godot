@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "CharacterBody2D",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://player/player.gd"
+}, {
+"base": "Node2D",
+"class": &"Weapon",
+"language": &"GDScript",
+"path": "res://weapons/weapon.gd"
+}]
+_global_script_class_icons={
+"Player": "",
+"Weapon": ""
+}
+
 [application]
 
 config/name="ld51"

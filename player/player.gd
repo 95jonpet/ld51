@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const TARGET_FPS := 60
@@ -7,27 +8,23 @@ const FRICTION := 10
 const AIR_RESISTANCE := 1
 const GRAVITY := 4
 const JUMP_FORCE := 140
-const BULLET_SPEED := 256
-
-const BULLLET_SCENE := preload("res://player/bullet.tscn")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bullet_marker: Marker2D = $BulletMarker
-@onready var shoot_timer: Timer = $ShootTimer
+@onready var hand: Marker2D = $Hand
 @onready var sprite: Sprite2D = $Sprite
-var can_shoot: bool = true
+
+
+func set_weapon(weapon_resource: Resource) -> void:
+	var weapon: Weapon = weapon_resource.instantiate()
+	for child in hand.get_children():
+		child.queue_free()
+	hand.add_child(weapon)
 
 
 func _shoot() -> void:
-	if not can_shoot:
-		return
-	var bullet := BULLLET_SCENE.instantiate()
-	bullet.global_position = bullet_marker.global_position
-	bullet.velocity = get_local_mouse_position().normalized() * BULLET_SPEED
-	add_sibling(bullet)
-	bullet.look_at(get_global_mouse_position())
-	can_shoot = false
-	shoot_timer.start()
+	var weapon: Weapon = hand.get_child(0)
+	weapon.shoot(global_position.angle_to_point(get_global_mouse_position()))
 
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +34,6 @@ func _physics_process(delta: float) -> void:
 		animation_player.play("Run")
 		velocity.x += x_input * ACCELERATION * delta * TARGET_FPS
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
-		sprite.flip_h = x_input < 0
 	else:
 		animation_player.play("Stand")
 
@@ -59,9 +55,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	var mouse_position := get_global_mouse_position()
+	hand.look_at(mouse_position)
+	if global_position.x < mouse_position.x:
+		hand.scale.y = 1
+		hand.position.x = abs(hand.position.x)
+		sprite.flip_h = false
+	else:
+		hand.scale.y = -1
+		hand.position.x = -abs(hand.position.x)
+		sprite.flip_h = true
+
 	if Input.is_action_pressed("action_shoot"):
 		_shoot()
-
-
-func _on_shoot_timer_timeout() -> void:
-	can_shoot = true

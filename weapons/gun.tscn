@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmqsq1yiixcyt"]
+
+[ext_resource type="Texture2D" uid="uid://dnv7vlw2iykdm" path="res://weapons/gun.png" id="1_rocik"]
+[ext_resource type="PackedScene" uid="uid://be1nm0jb2bdud" path="res://weapons/weapon.tscn" id="1_u43eu"]
+[ext_resource type="Script" path="res://weapons/gun.gd" id="2_6vo44"]
+
+[node name="Gun" instance=ExtResource("1_u43eu")]
+script = ExtResource("2_6vo44")
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(4, -1)
+texture = ExtResource("1_rocik")
+
+[node name="Barrel" parent="." index="1"]
+position = Vector2(10, -4)
+
+[node name="Timer" parent="." index="2"]
+wait_time = 0.4

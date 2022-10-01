@@ -1,15 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb363wjw6073t"]
+[gd_scene load_steps=11 format=3 uid="uid://cjbswlasmknyp"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_kvsw7"]
 [ext_resource type="Texture2D" uid="uid://dunibwktb6rvj" path="res://player/player.png" id="1_nkurx"]
 [ext_resource type="Texture2D" uid="uid://ca71nfyadvfua" path="res://player/light.png" id="3_o8i4f"]
+[ext_resource type="PackedScene" uid="uid://wtdnyokeq11p" path="res://weapons/machine_gun.tscn" id="4_tu8j4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_haylj"]
 size = Vector2(6, 14)
 
-[sub_resource type="Animation" id="Animation_h075u"]
-resource_name = "Stand"
-length = 0.1
+[sub_resource type="Animation" id="Animation_2ecvy"]
+resource_name = "Jump"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_41vkv"]
@@ -55,8 +55,9 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 3]
 }
 
-[sub_resource type="Animation" id="Animation_2ecvy"]
-resource_name = "Jump"
+[sub_resource type="Animation" id="Animation_h075u"]
+resource_name = "Stand"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,7 +68,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kj5f6"]
@@ -104,12 +105,10 @@ shadow_enabled = true
 texture = ExtResource("3_o8i4f")
 texture_scale = 0.5
 
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-autostart = true
-
 [node name="BulletMarker" type="Marker2D" parent="."]
 position = Vector2(0, -8)
 
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[node name="Hand" type="Marker2D" parent="."]
+position = Vector2(4, -6)
+
+[node name="MachineGun" parent="Hand" instance=ExtResource("4_tu8j4")]

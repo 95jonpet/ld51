@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://37taxxwtptnt"]
+
+[ext_resource type="Texture2D" uid="uid://br7y7gln3ucor" path="res://world/door.png" id="1_m74ex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33bfb"]
+size = Vector2(16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6iyg"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="Door" type="AnimatableBody2D"]
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+texture = ExtResource("1_m74ex")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_33bfb")
+
+[node name="LightOccluder2d" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_o6iyg")
