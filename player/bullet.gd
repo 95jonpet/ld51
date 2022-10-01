@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
 
-func _physics_process(_delta: float) -> void:
-	if move_and_slide():
+func _physics_process(delta: float) -> void:
+	var collision := move_and_collide(velocity * delta)
+	if collision:
+		var collider = collision.get_collider()
+		if collider.has_method("hurt"):
+			collider.call("hurt")
 		queue_free()
 
 

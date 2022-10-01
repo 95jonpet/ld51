@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://ca71nfyadvfua" path="res://player/light.png" id="2_y8fge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cw74r"]
-size = Vector2(5, 3)
+size = Vector2(6, 4)
 
 [node name="Bullet" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_u7q3x")
 

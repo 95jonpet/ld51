@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cegnppiabjaqh"]
+[gd_scene load_steps=6 format=3 uid="uid://cegnppiabjaqh"]
 
 [ext_resource type="PackedScene" uid="uid://cb363wjw6073t" path="res://player/player.tscn" id="1_buf4i"]
 [ext_resource type="Script" path="res://game.gd" id="1_scpoh"]
 [ext_resource type="TileSet" uid="uid://b2cr3yys3f4lk" path="res://world/tileset.tres" id="2_8gp27"]
 [ext_resource type="FontFile" uid="uid://bl0kpcm0xylnf" path="res://ui/kenney_blocks.ttf" id="4_287wc"]
+[ext_resource type="PackedScene" uid="uid://c2118xkybqvds" path="res://demon/demon.tscn" id="5_icj86"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_scpoh")
@@ -26,6 +27,14 @@ layer_0/tile_data = PackedInt32Array(0, 196608, 0, 65536, 262144, 2, 131072, 262
 [node name="Player" parent="." instance=ExtResource("1_buf4i")]
 position = Vector2(168, 128)
 
+[node name="Spawners" type="Node" parent="."]
+
+[node name="Spawner1" type="Marker2D" parent="Spawners"]
+position = Vector2(88, -32)
+
+[node name="Spawner2" type="Marker2D" parent="Spawners"]
+position = Vector2(264, -32)
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -46,3 +55,11 @@ theme_override_fonts/font = ExtResource("4_287wc")
 theme_override_font_sizes/font_size = 64
 text = "10.00"
 horizontal_alignment = 1
+
+[node name="Demon" parent="." instance=ExtResource("5_icj86")]
+position = Vector2(232, 144)
+
+[node name="Demon2" parent="." instance=ExtResource("5_icj86")]
+position = Vector2(88, 96)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

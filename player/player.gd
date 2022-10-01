@@ -9,7 +9,7 @@ const GRAVITY := 4
 const JUMP_FORCE := 140
 const BULLET_SPEED := 256
 
-const BULLLET_SCENE = preload("res://player/bullet.tscn")
+const BULLLET_SCENE := preload("res://player/bullet.tscn")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var bullet_marker: Marker2D = $BulletMarker
