@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cejjx1mx83p8a"]
+
+[ext_resource type="Script" path="res://player/bullet.gd" id="1_u7q3x"]
+[ext_resource type="Texture2D" uid="uid://cjnsnq2iqrbi3" path="res://player/bullet.png" id="2_oinxh"]
+[ext_resource type="Texture2D" uid="uid://ca71nfyadvfua" path="res://player/light.png" id="2_y8fge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw74r"]
+size = Vector2(5, 3)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_u7q3x")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_oinxh")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cw74r")
+
+[node name="PointLight2d" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("2_y8fge")
+texture_scale = 0.25
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
