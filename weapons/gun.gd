@@ -13,7 +13,3 @@ func _shoot(direction: float) -> void:
 	get_tree().root.add_child(bullet)
 	bullet.rotation = direction
 	bullet.velocity = Vector2(BULLET_SPEED, 0).rotated(direction)
-
-
-func _on_timer_timeout() -> void:
-	pass # Replace with function body.

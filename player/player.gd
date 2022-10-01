@@ -15,6 +15,10 @@ const JUMP_FORCE := 140
 @onready var sprite: Sprite2D = $Sprite
 
 
+func hurt() -> void:
+	print_debug("TODO: Hurt the player")
+
+
 func set_weapon(weapon_resource: Resource) -> void:
 	var weapon: Weapon = weapon_resource.instantiate()
 	for child in hand.get_children():

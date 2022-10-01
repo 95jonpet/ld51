@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_kvsw7"]
 [ext_resource type="Texture2D" uid="uid://dunibwktb6rvj" path="res://player/player.png" id="1_nkurx"]
 [ext_resource type="Texture2D" uid="uid://ca71nfyadvfua" path="res://player/light.png" id="3_o8i4f"]
-[ext_resource type="PackedScene" uid="uid://wtdnyokeq11p" path="res://weapons/machine_gun.tscn" id="4_tu8j4"]
+[ext_resource type="PackedScene" uid="uid://cmqsq1yiixcyt" path="res://weapons/gun.tscn" id="4_kf6g4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_haylj"]
 size = Vector2(6, 14)
@@ -111,4 +111,4 @@ position = Vector2(0, -8)
 [node name="Hand" type="Marker2D" parent="."]
 position = Vector2(4, -6)
 
-[node name="MachineGun" parent="Hand" instance=ExtResource("4_tu8j4")]
+[node name="Gun" parent="Hand" instance=ExtResource("4_kf6g4")]
