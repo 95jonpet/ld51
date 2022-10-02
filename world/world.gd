@@ -35,7 +35,7 @@ func generate_random_world() -> Vector2:
 	var spawn := Vector2.ZERO
 
 	# Prepare a rough map to fill out with sections.
-	var map := []
+	var map: Array[Array] = []
 	for x in range(WORLD_SIZE):
 		var column := []
 		column.resize(WORLD_SIZE)
@@ -106,7 +106,7 @@ func generate_random_world() -> Vector2:
 		_create_section(OUTSIDE_SCENE, Vector2i(i * Section.WIDTH, -Section.HEIGHT))
 		_create_section(OUTSIDE_SCENE, Vector2i(WORLD_SIZE * Section.WIDTH, i * Section.HEIGHT))
 		_create_section(OUTSIDE_SCENE, Vector2i(-Section.WIDTH, i * Section.HEIGHT))
-	
+
 	return spawn
 
 

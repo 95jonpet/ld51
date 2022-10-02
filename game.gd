@@ -5,6 +5,8 @@ extends Node2D
 @onready var player: Player = $Player
 @onready var world: World = $World
 
+const SONG_1 := preload("res://music/song_1.ogg")
+
 const WEAPONS: Array[Resource] = [
 	preload("res://weapons/gun.tscn"),
 	preload("res://weapons/machine_gun.tscn"),
@@ -25,6 +27,7 @@ func randomize_world() -> void:
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.html("#130208"))
 	randomize_world()
+	AudioPlayer.play_music(SONG_1)
 
 
 func _process(_delta: float) -> void:

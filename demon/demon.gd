@@ -3,6 +3,7 @@ extends CharacterBody2D
 const MOVEMENT_SPEED := 48
 const GRAVITY := 4
 const TARGET_FPS := 60
+const HURT_SOUND := preload("res://demon/demon_hurt.wav")
 var direction := Vector2.RIGHT
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -13,6 +14,7 @@ var direction := Vector2.RIGHT
 
 
 func hurt() -> void:
+	AudioPlayer.play(HURT_SOUND)
 	queue_free()
 
 
