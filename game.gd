@@ -60,7 +60,10 @@ func _generate_random_world() -> void:
 			possible.append(Vector2i.LEFT)
 		if current.x < WORLD_SIZE - 1 and map[current.x + 1][current.y] == null:
 			possible.append(Vector2i.RIGHT)
-		if current.y < WORLD_SIZE and map[current.x][current.y + 1] == null:
+		if current.y == WORLD_SIZE - 1:
+			# Allow an exit to be placed on the lowest room by attempting to create a lower room.
+			possible.append(Vector2i.DOWN)
+		if current.y < WORLD_SIZE - 1 and map[current.x][current.y + 1] == null:
 			possible.append(Vector2i.DOWN)
 		if possible.is_empty():
 			end = current
@@ -68,7 +71,8 @@ func _generate_random_world() -> void:
 			var next := current + possible[randi() % len(possible)]
 			if next.y == current.y:
 				map[next.x][next.y] = SectionType.CORRIDOR
-			elif next.y == WORLD_SIZE - 1:
+			elif next.y == WORLD_SIZE:
+				# Place an exit if attempting to create a room beneath the lowest room.
 				end = current
 			else:
 				map[current.x][current.y] = SectionType.DROP
