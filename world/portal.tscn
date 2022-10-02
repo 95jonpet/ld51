@@ -26,4 +26,20 @@ collision_mask = 2
 [node name="CollisionShape2d" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_fnjtw")
 
+[node name="CpuParticles2d" type="CPUParticles2D" parent="."]
+amount = 32
+emission_shape = 1
+emission_sphere_radius = 24.0
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.2
+linear_accel_min = 6.0
+linear_accel_max = 6.0
+radial_accel_min = -24.0
+radial_accel_max = -16.0
+tangential_accel_min = 6.0
+tangential_accel_max = 6.0
+scale_amount_min = 0.5
+color = Color(0.486275, 0.0941176, 0.235294, 1)
+
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

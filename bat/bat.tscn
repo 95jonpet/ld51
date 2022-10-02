@@ -48,15 +48,17 @@ _data = {
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_lgy4k")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 texture = ExtResource("1_u637d")
+offset = Vector2(0, 12)
 hframes = 7
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_wbkwh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -65,24 +67,23 @@ libraries = {
 }
 
 [node name="PointLight2d" type="PointLight2D" parent="."]
-position = Vector2(0, -8)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("2_lk07v")
 texture_scale = 0.25
 
 [node name="LeftWorldCheck" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+exclude_parent = false
 target_position = Vector2(-128, 0)
 
 [node name="RightWorldCheck" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+exclude_parent = false
 target_position = Vector2(128, 0)
 
 [node name="UpWorldCheck" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+exclude_parent = false
 target_position = Vector2(0, -128)
 
 [node name="DownWorldCheck" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+exclude_parent = false
 target_position = Vector2(0, 128)
