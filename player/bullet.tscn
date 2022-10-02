@@ -9,7 +9,7 @@ size = Vector2(6, 4)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 5
+collision_mask = 37
 motion_mode = 1
 script = ExtResource("1_u7q3x")
 

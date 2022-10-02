@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 
+func hurt() -> void:
+	queue_free()
+
+
 func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(velocity * delta)
 	if collision:

@@ -50,10 +50,11 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ld51"
+config/name="Hellish Descent"
+config/description="Made by Peter Jonsson for Ludum Dare 51."
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -121,7 +122,9 @@ action_unpause={
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Bullets"
 2d_physics/layer_5="Ladders"
+2d_physics/layer_6="Enemy Bullets"
 
 [rendering]
 
+limits/opengl/max_renderable_lights=64
 textures/canvas_textures/default_texture_filter=0

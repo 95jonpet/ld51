@@ -39,6 +39,17 @@ func shoot() -> void:
 
 	AudioPlayer.play(SHOOT_SOUND)
 	var target_position := target.global_position + Vector2(0, -8)
+	_shoot_toward_point(target_position)
+
+
+func shoot_cascade() -> void:
+	AudioPlayer.play(SHOOT_SOUND)
+	_shoot_toward_point(bullet_marker.global_position + Vector2.LEFT)
+	_shoot_toward_point(bullet_marker.global_position + Vector2.RIGHT)
+	_shoot_toward_point(bullet_marker.global_position + Vector2.UP)
+
+
+func _shoot_toward_point(target_position: Vector2) -> void:
 	var bullet := BULLET_SCENE.instantiate()
 	add_sibling(bullet)
 	bullet.global_position = bullet_marker.global_position

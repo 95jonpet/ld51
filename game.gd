@@ -21,6 +21,7 @@ const SONGS: Array[AudioStream] = [
 ]
 const PORTAL_REACHED_SOUND := preload("res://world/portal_reached.wav")
 
+const CROSSHAIR_SPRITE: Texture2D = preload("res://ui/crosshair.png")
 const PLAYER_NORMAL_SPRITE := preload("res://player/player.png")
 const PLAYER_HURT_SPRITE := preload("res://player/player_hurt.png")
 const LIFE_INDICATOR_SPRITE := preload("res://ui/life_indicator.png")
@@ -47,6 +48,7 @@ func randomize_world() -> void:
 
 
 func restart() -> void:
+	timer.start()
 	weapon_index = -1
 	lives = MAX_LIVES
 	health = HEALTH_PER_LIFE
@@ -71,6 +73,7 @@ func update_life_indicators() -> void:
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.html("#130208"))
+	Input.set_custom_mouse_cursor(CROSSHAIR_SPRITE, Input.CURSOR_ARROW, CROSSHAIR_SPRITE.get_size() / 2)
 	AudioPlayer.play_music(SONGS)
 	game_over_screen.dismissed.connect(restart)
 	game_over_screen.visible = false
@@ -92,6 +95,9 @@ func _on_portal_reached(_player: Player) -> void:
 
 func _on_timer_timeout() -> void:
 	switch_weapon()
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
+		if enemy.has_method("shoot_cascade"):
+			enemy.call("shoot_cascade")
 
 
 func _on_player_player_hurt() -> void:
