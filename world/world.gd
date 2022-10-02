@@ -117,8 +117,8 @@ func generate_random_world() -> Array:
 	return [spawn, portal]
 
 
-func _create_portal(portal_position: Vector2) -> Portal:
-	var portal: Portal = PORTAL_SCENE.instantiate(PackedScene.GEN_EDIT_STATE_MAIN_INHERITED)
+func _create_portal(portal_position: Vector2) -> Node2D:
+	var portal = PORTAL_SCENE.instantiate()
 	portal.global_position = portal_position
 	add_child(portal)
 	return portal

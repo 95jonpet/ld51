@@ -42,7 +42,7 @@ func switch_weapon() -> void:
 func randomize_world() -> void:
 	var world_data := world.generate_random_world()
 	var spawn: Vector2 = world_data[0]
-	var portal: Portal = world_data[1]
+	var portal = world_data[1]
 	player.global_position = spawn
 	portal.portal_reached.connect(_on_portal_reached)
 

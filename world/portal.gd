@@ -1,4 +1,3 @@
-class_name Portal
 extends CharacterBody2D
 
 signal portal_reached(player: Player)

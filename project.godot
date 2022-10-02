@@ -19,11 +19,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player/player.gd"
 }, {
-"base": "CharacterBody2D",
-"class": &"Portal",
-"language": &"GDScript",
-"path": "res://world/portal.gd"
-}, {
 "base": "Node2D",
 "class": &"Section",
 "language": &"GDScript",
@@ -42,7 +37,6 @@ _global_script_classes=[{
 _global_script_class_icons={
 "GameOverScreen": "",
 "Player": "",
-"Portal": "",
 "Section": "",
 "Weapon": "",
 "World": ""
