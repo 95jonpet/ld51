@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1ky6fnni1db0"]
+[gd_scene load_steps=5 format=3 uid="uid://b1ky6fnni1db0"]
 
 [ext_resource type="PackedScene" uid="uid://cjbswlasmknyp" path="res://player/player.tscn" id="1_buf4i"]
 [ext_resource type="Script" path="res://game.gd" id="1_scpoh"]
+[ext_resource type="PackedScene" uid="uid://dflvk0w8lohh2" path="res://world/world.tscn" id="2_oyrxy"]
 [ext_resource type="FontFile" uid="uid://bl0kpcm0xylnf" path="res://ui/kenney_blocks.ttf" id="4_287wc"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_scpoh")
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" parent="." instance=ExtResource("2_oyrxy")]
 
 [node name="Player" parent="." instance=ExtResource("1_buf4i")]
 position = Vector2(168, 128)
