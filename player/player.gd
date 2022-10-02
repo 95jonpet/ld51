@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal player_hurt()
+
 enum State { MOVE, CLIMB }
 
 const TARGET_FPS := 60
@@ -22,7 +24,8 @@ var state: State = State.MOVE
 
 
 func hurt() -> void:
-	print_debug("TODO: Hurt the player")
+	ScreenShake.apply_shake(64)
+	player_hurt.emit()
 
 
 func set_weapon(weapon_resource: Resource) -> void:

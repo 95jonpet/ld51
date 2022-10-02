@@ -6,21 +6,23 @@ const WORLD_SIZE := 4
 enum SectionType {
 	CORRIDOR,
 	DROP,
-	EXIT,
 	LANDING,
 }
 
 const ENTRANCE_SCENE := preload("res://sections/entrance.tscn")
 const OUTSIDE_SCENE := preload("res://sections/outside.tscn")
+const PORTAL_SCENE := preload("res://world/portal.tscn")
 
 const CORRIDORS: Array[Resource] = [
 	preload("res://sections/corridors/corridor_1.tscn"),
 	preload("res://sections/corridors/corridor_2.tscn"),
+	preload("res://sections/corridors/corridor_3.tscn"),
 ]
 
 const DROPS: Array[Resource] = [
 	preload("res://sections/drops/drop_1.tscn"),
 	preload("res://sections/drops/drop_2.tscn"),
+	preload("res://sections/drops/drop_3.tscn"),
 ]
 
 const LANDINGS: Array[Resource] = [
@@ -30,9 +32,11 @@ const LANDINGS: Array[Resource] = [
 
 
 # Generate a random world and return the spawn position.
-func generate_random_world() -> Vector2:
+# Returns [spawn_position, exit_portal]
+func generate_random_world() -> Array:
 	_clear_world()
 	var spawn := Vector2.ZERO
+	var portal = null
 
 	# Prepare a rough map to fill out with sections.
 	var map: Array[Array] = []
@@ -91,14 +95,17 @@ func generate_random_world() -> Vector2:
 					section_scenes.append_array(LANDINGS)
 			if x == start.x and y == start.y:
 				section_scenes = [ENTRANCE_SCENE]
+			if x == end.x and y == end.y:
+				section_scenes = [ENTRANCE_SCENE]
 			if section_scenes:
 				var section: Section = section_scenes[randi() % len(section_scenes)].instantiate()
 				section.position = Vector2(x * Section.WIDTH, y * Section.HEIGHT)
 				add_child(section)
 
 				if x == start.x and y == start.y:
-					print_debug(section)
 					spawn = section.get_node("Spawn").global_position
+				elif x == end.x and y == end.y:
+					portal = _create_portal(section.get_node("Spawn").global_position)
 
 	# Fill the outer edges to prevent entities from escaping the map.
 	for i in range(WORLD_SIZE):
@@ -107,7 +114,14 @@ func generate_random_world() -> Vector2:
 		_create_section(OUTSIDE_SCENE, Vector2i(WORLD_SIZE * Section.WIDTH, i * Section.HEIGHT))
 		_create_section(OUTSIDE_SCENE, Vector2i(-Section.WIDTH, i * Section.HEIGHT))
 
-	return spawn
+	return [spawn, portal]
+
+
+func _create_portal(portal_position: Vector2) -> Portal:
+	var portal: Portal = PORTAL_SCENE.instantiate(PackedScene.GEN_EDIT_STATE_MAIN_INHERITED)
+	portal.global_position = portal_position
+	add_child(portal)
+	return portal
 
 
 func _create_section(section_resource: Resource, section_position: Vector2i) -> void:

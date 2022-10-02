@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://fb6x7tt2vecb"]
+
+[ext_resource type="Script" path="res://demon/demon_bullet.gd" id="1_7onpe"]
+[ext_resource type="Texture2D" uid="uid://b15f6yeipf7o7" path="res://demon/demon_bullet.png" id="1_v1fim"]
+[ext_resource type="Texture2D" uid="uid://ca71nfyadvfua" path="res://player/light.png" id="2_55ff4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijlq3"]
+size = Vector2(6, 4)
+
+[node name="DemonBullet" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_7onpe")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_v1fim")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ijlq3")
+
+[node name="PointLight2d" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("2_55ff4")
+texture_scale = 0.25
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

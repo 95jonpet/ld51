@@ -14,6 +14,10 @@ func _shoot(direction: float) -> void:
 	_shoot_in_direction(direction + offset)
 
 
+func _shake_intensity() -> float:
+	return 32.0
+
+
 func _sound() -> AudioStream:
 	return preload("res://weapons/shotgun.wav")
 

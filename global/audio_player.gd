@@ -4,6 +4,8 @@ const STREAM_COUNT: int = 8
 
 var _available: Array[AudioStreamPlayer] = []
 var _music_stream_player: AudioStreamPlayer
+var _music_stream_index: int = -1
+var _music_streams: Array[AudioStream] = []
 var _queue: Array[AudioStream] = []
 
 
@@ -11,17 +13,25 @@ func play(stream: AudioStream) -> void:
 	_queue.append(stream)
 
 
-func play_music(stream: AudioStream) -> void:
-	_music_stream_player.stream = stream
+func play_music(streams: Array) -> void:
+	_music_streams = streams
+	_music_stream_index = 0
+	_play_next_music_stream()
+
+
+func _play_next_music_stream() -> void:
+	_music_stream_index = (_music_stream_index + 1) % len(_music_streams)
+	_music_stream_player.stream = _music_streams[_music_stream_index]
 	_music_stream_player.play()
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS  # Play audio even when paused.
 	_music_stream_player = AudioStreamPlayer.new()
 	_music_stream_player.finished.connect(_on_music_finished)
 	_music_stream_player.bus = "Music"
 	add_child(_music_stream_player)
-	
+
 	for i in STREAM_COUNT - 1:
 		var p := AudioStreamPlayer.new()
 		add_child(p)
@@ -38,7 +48,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_music_finished() -> void:
-	_music_stream_player.play()
+	_play_next_music_stream()
 
 
 func _on_stream_finished(player: AudioStreamPlayer) -> void:

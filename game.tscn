@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1ky6fnni1db0"]
+[gd_scene load_steps=7 format=3 uid="uid://b1ky6fnni1db0"]
 
 [ext_resource type="PackedScene" uid="uid://cjbswlasmknyp" path="res://player/player.tscn" id="1_buf4i"]
 [ext_resource type="Script" path="res://game.gd" id="1_scpoh"]
 [ext_resource type="PackedScene" uid="uid://dflvk0w8lohh2" path="res://world/world.tscn" id="2_oyrxy"]
+[ext_resource type="Texture2D" uid="uid://bymbse5m82vwi" path="res://ui/life_indicator.png" id="4_61t5r"]
 [ext_resource type="FontFile" uid="uid://bl0kpcm0xylnf" path="res://ui/kenney_blocks.ttf" id="4_287wc"]
+[ext_resource type="PackedScene" uid="uid://uqhef72lbfka" path="res://ui/game_over_screen.tscn" id="6_qfqdy"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_scpoh")
@@ -14,16 +16,59 @@ script = ExtResource("1_scpoh")
 position = Vector2(168, 128)
 
 [node name="Camera" type="Camera2D" parent="Player"]
-position = Vector2(-168, -128)
-anchor_mode = 0
 current = true
 zoom = Vector2(4, 4)
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -20.0
+offset_bottom = -20.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Control"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Player/Control/HBoxContainer"]
+offset_right = 4.0
+offset_bottom = 4.0
+texture = ExtResource("4_61t5r")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Player/Control/HBoxContainer"]
+offset_left = 6.0
+offset_right = 10.0
+offset_bottom = 4.0
+texture = ExtResource("4_61t5r")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Player/Control/HBoxContainer"]
+offset_left = 12.0
+offset_right = 16.0
+offset_bottom = 4.0
+texture = ExtResource("4_61t5r")
+stretch_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" parent="CanvasLayer" instance=ExtResource("6_qfqdy")]
+process_mode = 2
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -40,4 +85,5 @@ theme_override_font_sizes/font_size = 64
 text = "10.00"
 horizontal_alignment = 1
 
+[connection signal="player_hurt" from="Player" to="." method="_on_player_player_hurt"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

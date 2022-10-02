@@ -16,6 +16,7 @@ centered = false
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_3x50t")
 format = 2
+layer_0/name = "Walls"
 
 [node name="Ladders" type="Node2D" parent="."]
 

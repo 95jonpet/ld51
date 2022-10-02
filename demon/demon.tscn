@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2118xkybqvds"]
+[gd_scene load_steps=11 format=3 uid="uid://c2118xkybqvds"]
 
 [ext_resource type="Script" path="res://demon/demon.gd" id="1_jxidc"]
 [ext_resource type="Texture2D" uid="uid://bi4ayvt8v6ubo" path="res://demon/demon.png" id="1_pxlt3"]
@@ -37,6 +37,22 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_h075u"]
+resource_name = "Stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_bgpo3"]
 resource_name = "Run"
 length = 0.6
@@ -54,22 +70,6 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4, 5, 3]
 }
 
-[sub_resource type="Animation" id="Animation_h075u"]
-resource_name = "Stand"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kj5f6"]
 _data = {
 "Jump": SubResource("Animation_2ecvy"),
@@ -77,6 +77,9 @@ _data = {
 "Run": SubResource("Animation_bgpo3"),
 "Stand": SubResource("Animation_h075u")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mcvo"]
+radius = 64.0
 
 [node name="Demon" type="CharacterBody2D"]
 collision_layer = 4
@@ -111,7 +114,7 @@ target_position = Vector2(0, 2)
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(32, 0)
-collision_mask = 2
+collision_mask = 3
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 position = Vector2(0, -18)
@@ -122,3 +125,22 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 16.0
 initial_velocity_max = 16.0
 color = Color(1, 0.509804, 0.454902, 1)
+
+[node name="BulletMarker" type="Marker2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="PlayerDetectionArea"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_8mcvo")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

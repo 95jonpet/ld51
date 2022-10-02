@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5dcna7qnab6j"]
+
+[sub_resource type="GDScript" id="GDScript_7dsyb"]
+script/source = "class_name Camera
+extends Camera2D
+
+const MIN_DISTANCE_SQUARED := 64 * 64
+const MAX_DISTANCE_SQUARED := 128 * 128
+const MOVEMENT_SPEED := 4
+const SENSITIVITY := 0.5
+
+
+func _physics_process(delta: float) -> void:
+	var offset: Vector2 =  get_global_mouse_position()
+
+	var target_position: Vector2 = Vector2.ZERO
+	if offset.length_squared() >= MIN_DISTANCE_SQUARED:
+		var distance_squared = min(offset.length_squared(), MAX_DISTANCE_SQUARED) - MIN_DISTANCE_SQUARED
+		target_position = global_position + (offset.normalized() * sqrt(distance_squared))
+
+	global_position = target_position
+#	global_position = lerp(global_position, target_position, MOVEMENT_SPEED * delta)
+"
+
+[node name="Camera" type="Camera2D"]
+script = SubResource("GDScript_7dsyb")

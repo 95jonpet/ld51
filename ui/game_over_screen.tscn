@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://uqhef72lbfka"]
+
+[ext_resource type="FontFile" uid="uid://bl0kpcm0xylnf" path="res://ui/kenney_blocks.ttf" id="1_glfm2"]
+[ext_resource type="Script" path="res://ui/game_over_screen.gd" id="1_uf0lb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gam0"]
+
+[node name="GameOverScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_uf0lb")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+offset_left = 450.0
+offset_top = 159.0
+offset_right = 1086.0
+offset_bottom = 705.0
+
+[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+offset_right = 636.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("1_glfm2")
+theme_override_font_sizes/font_size = 64
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 103.0
+offset_right = 636.0
+offset_bottom = 295.0
+theme_override_constants/separation = 192
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3gam0")
+
+[node name="StatsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 299.0
+offset_right = 636.0
+offset_bottom = 449.0
+theme_override_fonts/font = ExtResource("1_glfm2")
+theme_override_font_sizes/font_size = 48
+text = "Enemies killed: 0
+Levels Completed: 0"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 453.0
+offset_right = 636.0
+offset_bottom = 485.0
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3gam0")
+
+[node name="HelpLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 489.0
+offset_right = 636.0
+offset_bottom = 546.0
+theme_override_fonts/font = ExtResource("1_glfm2")
+theme_override_font_sizes/font_size = 36
+text = "Press [SPACE] to restart"
+horizontal_alignment = 1

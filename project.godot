@@ -9,10 +9,20 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Control",
+"class": &"GameOverScreen",
+"language": &"GDScript",
+"path": "res://ui/game_over_screen.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://player/player.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Portal",
+"language": &"GDScript",
+"path": "res://world/portal.gd"
 }, {
 "base": "Node2D",
 "class": &"Section",
@@ -30,7 +40,9 @@ _global_script_classes=[{
 "path": "res://world/world.gd"
 }]
 _global_script_class_icons={
+"GameOverScreen": "",
 "Player": "",
+"Portal": "",
 "Section": "",
 "Weapon": "",
 "World": ""
@@ -46,6 +58,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioPlayer="*res://global/audio_player.gd"
+ScreenShake="*res://global/screen_shake.gd"
+Statistics="*res://global/statistics.gd"
 
 [display]
 
@@ -90,6 +104,13 @@ action_jump={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194320,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+]
+}
+action_unpause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
 ]
 }
 

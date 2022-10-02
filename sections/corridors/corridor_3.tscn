@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgqgiqh6nehxv"]
+
+[ext_resource type="PackedScene" uid="uid://blb80p3fefnl4" path="res://sections/section.tscn" id="1_8cubn"]
+[ext_resource type="PackedScene" uid="uid://ccl7yugk4jd7m" path="res://world/spikes.tscn" id="2_bagwf"]
+[ext_resource type="PackedScene" uid="uid://c2118xkybqvds" path="res://demon/demon.tscn" id="3_xhi8g"]
+
+[node name="Corridor3" instance=ExtResource("1_8cubn")]
+
+[node name="TileMap" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(9, 131072, 3, 8, 0, 3, 0, 0, 0, 1, 65536, 0, 2, 327680, 0, 3, 131072, 3, 458754, 131072, 3, 458753, 65536, 3, 458752, 0, 3, 458759, 0, 3, 458760, 393216, 3, 458761, 131072, 2, 393225, 131072, 1, 327689, 131072, 0, 327688, 0, 0, 393224, 0, 1, 65536, 0, 1, 131072, 0, 2, 131073, 65536, 2, 131074, 131072, 2, 65537, 65536, 1, 65538, 131072, 1, 262148, 0, 3, 262149, 524288, 0, 262150, 131072, 3, 327685, 196608, 2)
+
+[node name="Spikes2" parent="Spikes" index="0" instance=ExtResource("2_bagwf")]
+position = Vector2(24, 104)
+
+[node name="Spikes3" parent="Spikes" index="1" instance=ExtResource("2_bagwf")]
+position = Vector2(88, 56)
+
+[node name="Demon" parent="Enemies" index="0" instance=ExtResource("3_xhi8g")]
+position = Vector2(136, 80)
